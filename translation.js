@@ -44,7 +44,7 @@ function preload() {
     myFont = loadFont("ensoBold.ttf");
     firstpage = select("#intro");
     gamepage = select("#game");
-    gameover = select("#gameover");
+    gameover = select("#gameover2");
     targetmes = select("#target");
     scoremes = select("#score");
     ouch = loadSound('ouch.mp3');
@@ -323,7 +323,7 @@ function draw() {
         /*            }
          }*/
 
-        button2.position(swidth/2, sheight/2);
+        button2.position(swidth*0.675, sheight*0.8);
         button2.show();
         button2.mousePressed(playAgain);
         //checks the scores to put people into the high score board

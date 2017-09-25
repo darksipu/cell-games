@@ -42,7 +42,7 @@ var songduration=0;
 var stage=0, player=[["lala", 0]], highscore, started=false, players=[];
 
 //controls the DOM for the instructions page, which will disappear when we start the game
-var firstpage, scoremes, gamepage, message, button, button2, myFont2;
+var firstpage, scoremes, gamepage, message, button, button2, myFont2, myFont3;
 
 //mutation levels
 var mutation = 0, myscore=0;
@@ -52,6 +52,7 @@ function preload() {
     //loading fonts
     myFont = loadFont("sude.ttf");
     myFont2 = loadFont("quick.otf");
+    myFont3 = loadFont("ensoBold.ttf");
 
     //getting screen size
     sheight = screen.height;
@@ -381,12 +382,12 @@ function draw() {
         //the title
         textSize(50);
         fill(150, 0, 50);
-        textFont(myFont);
+        textFont(myFont3);
         text("TOP TEN TRANSCRIBERS", swidth*0.05, sheight*0.1);
 
         //displaying the high scores
         fill(0);
-        textFont(myFont2);
+        textFont(myFont3);
         textSize(35);
 
         //these had to be done 'manually', as the for loop would give flashy text
@@ -420,7 +421,7 @@ function draw() {
         text(highscore[9][0], swidth*0.1, sheight*0.65);
         text(highscore[9][1], swidth*0.40, sheight*0.65);
 
-        button2.position(swidth/2, sheight/2);
+        button2.position(swidth*0.625, sheight*0.85);
         button2.show();
         button2.mousePressed(playAgain);
     }
