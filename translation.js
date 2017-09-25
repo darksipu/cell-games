@@ -320,8 +320,6 @@ function draw() {
 
         text(highscore[9][0], swidth*0.1, sheight*0.65);
         text(highscore[9][1], swidth*0.40, sheight*0.65);
-        /*            }
-         }*/
 
         button2.position(swidth*0.675, sheight*0.8);
         button2.show();
@@ -388,7 +386,7 @@ function addAcid(acids, version, desired) {
                 acids.push(new Particle(100 + ran * 50, 100 + ran * 50, swidth*0.05, 0, acidlist[ran], ra, g, b, false));
                 //console.log("Added a NORMAL");
 
-            } else if (needTarget === true && frameCount > timestarted + 600) {
+            } else if (needTarget === true && frameCount > timestarted + 500) {
 
                 //we first remove any acids that are the same as the next target and then add it
                 for (var k = 0; k < acids.length; k++) {
