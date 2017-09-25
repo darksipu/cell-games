@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css?family=Prociono');
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Wendy+One');
+
+#title {
+
+    margin-right: 25%;
+    margin-bottom: 50px;
+    font-family: Prociono;
+    font-size: 60px;
+    color: aquamarine;
+    text-shadow: -1px -1px 0px rgba(255,255,255,0.3), 1px 1px 0px rgba(0,0,0,0.8);
+    text-align: center;
+    -webkit-animation: fadein 4s;
+
+}
+
+.instructions {
+    text-align: center;
+    font-size: 30px;
+    padding-bottom:50px;
+    font-family: Prociono;
+    -webkit-animation: fadein 8s;
+
+}
+
+.instructions {
+    position:relative;
+    text-align: center;
+    font-size: 25px;
+    padding-bottom:50px;
+    padding-right:200px;
+    font-family: Prociono;
+    -webkit-animation: fadein 8s;
+
+}
+
+#intro1 {
+    width:100%;
+    margin-top:2%;
+    margin-left: 20% !important;
+}
+
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+
+#intro {
+    margin:2% 5% 0 5%;
+}
+
+#intro p {
+    padding: 0 28% 0 0;
+}
+
+/* CSS for the transcription*/
+
+#message {
+    /*display: none;*/
+    font-size: 40px;
+    padding: 100px 0 0 400px;
+}
+
+.fade {
+    animation:fadeout 1.5s forwards;
+}
+
+@keyframes fadeout {
+    0% { opacity: 0; }
+    25% { opacity: 0.5; }
+    50% { opacity: 1; }
+    75% { opacity: 0.5; }
+    100% { opacity: 0; }
+}
+
+.hide {
+    display:none;
+}
+
+.DNA {
+    float:left;
+    position: relative;
+}
+
+.RNA {
+    float:left;
+    position: relative;
+}
+
+.DNA img {
+    padding-right:10px;
+    padding-bottom: 10px;
+}
+
+.RNA img {
+    padding-right:10px;
+    padding-bottom: 10px;
+}
+
+
+/* CSS for the translation game*/
+#game {
+    float: right;
+    text-align: center;
+    display: none;
+    margin: 1% 0 0 62%;
+}
+
+#game p {
+    padding-left:50%;
+}
+
+
+#gameover {
+    display: none;
+    margin: 10% 0 0 40%;
+
+}
+
+#loser {
+    padding-left:30px;
+    text-align: center;
+    font-size: 30px;
+    color: teal;
+    font-family: Orbitron;
+}
+
+#target {
+    text-align: center;
+    font-size: 120px;
+    color: crimson;
+    margin:0;
+    font-family: Wendy One;
+    font-style: italic;
+    text-shadow: -1px -1px 0px rgba(255,255,255,0.3), 1px 1px 0px rgba(0,0,0,0.8);
+}
+
+#targettext {
+    font-family: Noto Sans;
+    text-align: center;
+    font-size: 30px;
+    margin:0;
+    font-weight: 800;
+    font-style: italic;
+
+}
+
+#scoretext {
+    text-align: center;
+    font-size: 25px;
+    margin:0;
+    font-family: "Noto Sans";
+    color: dodgerblue;
+    font-weight: 800;
+    font-style: italic;
+
+}
+
+#score {
+    font-size: 20px;
+    font-family: Orbitron;
+    color: black;
+    font-style: italic;
+}
