@@ -80,7 +80,8 @@ function Particle(x, y,r, life, letter, ra, g, b, which) {
     //senses if it's caught by the mouse
     this.caught = function() {
         var dist = createVector(tRNA.position.x - this.position.x, tRNA.position.y-this.position.y);
-        return dist.mag()<20;
+        //change the second part to change how sensitive you are when eating AAs
+        return dist.mag()<(this.r+8)/2;
     }
     //wants to be caught by the mouse, but it's the non-target ones
     this.seek= function() {

@@ -43,7 +43,7 @@ function DNA(x, y, s, im, no, see) {
     }
 
     this.offBound = function () {
-        return this.y > 550;
+        return this.y > sheight*0.75;
     }
 }
 

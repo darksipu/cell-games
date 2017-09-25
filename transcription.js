@@ -64,16 +64,15 @@ function preload() {
     //where the DNA letters will be spawned
     DNAy = screen.height*0.05;
     //the speed with which the arrows fall
-    arrowspeed = screen.height*0.007;
+    //let's try out a few of them - range 0.003 to 0.007
+    arrowspeed = screen.height*0.0035;
 
     //selecting the DOM elements
     firstpage = select("#intro1");
     gamepage = select("#game");
     gameover = select("#gameover");
     scoremes = select("#score");
-    //telling the socket to connect to the 3000 port
-    //socket = io.connect('http://localhost:3000');
-    song = loadSound('trance3.mp3');
+    song = loadSound('dancesk.mp3');
 
     firstpage.style("display", "none");
 
@@ -353,7 +352,7 @@ function draw() {
         //addPoint(bands);
 
         //every 240ms we generate a 4x4 matrix containing the next 4 beats for arrows to be generated
-        if(frameCount===0 || frameCount%240===0){
+        if(frameCount===0 || frameCount%120===0){
             var time = Math.floor(musictempo(spectrum));
             patt(time);
             //console.log(time);
@@ -367,7 +366,7 @@ function draw() {
 
             // if visible, then we display
             arrows[i].display();
-            arrows[i].move(4);//with a speed of 4px/frame
+            arrows[i].move(arrowspeed);//with a speed of 4px/frame
 
             //checks if the right one was pressed, if they overlap and if the direction is good
             checking(arrows,arrows[i], i);
@@ -538,6 +537,12 @@ function spawn() {
 //this should be activated at the start or at every 240ms (4 beats)
 //at the start make sure everything in the array is at 0, then we add the 1s
 function patt(ave) {
+    var previous;
+
+    if (songduration>0) {
+        previous=patterns[3];
+    }
+    //console.log(previous);
 
     //initializing the whole array (the matrix actually) to 0
     for (var i=0; i<patterns.length;i++) {
@@ -552,13 +557,13 @@ function patt(ave) {
     var tempo;
 
     //depending on the values that I predefine for each song, tempos will be given
-    if (ave>120) {
+/*    if (ave>120) {
         tempo = 4;
-    } else if (ave>90 && ave<=120) {
+    } else*/ if (ave>100) {
         tempo=3;
-    } else if (ave<=50) {
+    } else if (ave<=40) {
         tempo=1;
-    } else if (ave > 50 && ave<=90) {
+    } else if (ave > 40 && ave<=100) {
         tempo=2;
     }
 
@@ -569,26 +574,38 @@ function patt(ave) {
     if (tempo===1) {
         var ran1 = Math.floor(Math.random()*4);
         var ran2 = Math.floor(Math.random()*4);
+        if (songduration>0) {
+            while (previous[ran2]===1) {
+            ran1 = Math.floor(Math.random()*4);
+        }}
+
         patterns[ran1][ran2]=1;
 
         //when 2 arrows will be displayed in 4 beats
     } else if (tempo===2) {
-        var coin = Math.floor(Math.random()*2);
+        var coin = Math.floor(Math.random()*100);
 
         //two arrows will be displayed and they're not on the same row and column
-        if (coin===0) {
+        if (coin>=30) {
             var ran4 = Math.floor(Math.random()*4);
 
-            if (ran4!==3) {
+            if (ran4===0) {
+                if (songduration>0) {
+                    while (previous[ran4+1]===1) {
+                        ran4++;
+                    }}
+                patterns[ran4][ran4+1]=1;
+
+            } else if (ran4===1 || ran4===2) {
                 patterns[ran4][ran4+1]=1;
             } else {
                 patterns[ran4][ran4-1]=1;
             }
 
             //getting the second arrow in the matrix
-            var sec = Math.floor(Math.random()*4);
+            var sec = Math.floor(Math.random()*(4-1)+1);
             while (sec===ran4) {
-                sec = Math.floor(Math.random()*4);
+                sec = Math.floor(Math.random()*(4-1)+1);
             }
             //making sure we can do it for the last one
             if (sec!=3){
@@ -598,8 +615,13 @@ function patt(ave) {
             }
 
             //when you want them to jump on the left and right at the same time
-        } else if (coin===1) {
+        } else {
             var ran3 = Math.floor(Math.random()*4);
+            if (songduration>0) {
+                while (previous[0]===1 || previous[3]===1) {
+                    ran3 = Math.floor(Math.random()*4);
+                }}
+
             patterns[ran3][0]=1;
             patterns[ran3][3]=1;
         }
@@ -609,6 +631,13 @@ function patt(ave) {
 
         //get something in the first row
         var first = Math.floor(Math.random()*4);
+
+        //this is to make sure we don't get 2 in the same column one after the other
+        if (songduration>0) {
+            while (previous[first]===1) {
+                first = Math.floor(Math.random()*4);
+            }}
+
         patterns[0][first] = 1;
         //for the next 2 ones
         for (var i = 1; i<3; i++){
@@ -623,7 +652,7 @@ function patt(ave) {
         }
 
         //when 4 arrows are in the 4 beats
-    } else if (tempo===4) {
+    } /*else if (tempo===4) {
 
         //setting the first one to a random one
         var ran7 = Math.floor(Math.random()*4);
@@ -639,7 +668,7 @@ function patt(ave) {
             patterns[i][third]=1;
             ran7=third;
         }
-    }
+    }*/
 
 }
 
@@ -663,7 +692,7 @@ function checking(list, nucleotide, no) {
             feedback(say[ran], colours);
             yeah = true;
             //console.log(da.what);
-            da.what="G";
+            //da.what="G";
         }
 
     } else if (upress===true && nucleotide.direction!==8) {
@@ -676,7 +705,7 @@ function checking(list, nucleotide, no) {
             var colours = createVector(240, 0, 0);
             feedback(saynegative[ran], colours);
             yeah=true;
-            da.what=nucleotide.direction;
+            //da.what=nucleotide.direction;
         }
     }
 
@@ -694,7 +723,7 @@ function checking(list, nucleotide, no) {
             feedback(say[ran], colours);
             yeah = true;
             //console.log(da.what);
-            da.what="T";
+            //da.what="T";
         }
 
     } else if (dpress===true && nucleotide.direction!==14) {
@@ -707,7 +736,7 @@ function checking(list, nucleotide, no) {
             var colours = createVector(240, 0, 0);
             feedback(saynegative[ran], colours);
             yeah=true;
-            da.what=nucleotide.direction;
+            //da.what=nucleotide.direction;
         }
     }
 
@@ -725,7 +754,7 @@ function checking(list, nucleotide, no) {
             feedback(say[ran], colours);
             yeah = true;
             //console.log(da.what);
-            da.what="A";
+            //da.what="A";
         }
 
     } else if (lpress===true && nucleotide.direction!==7) {
@@ -738,7 +767,7 @@ function checking(list, nucleotide, no) {
             var colours = createVector(240, 0, 0);
             feedback(saynegative[ran], colours);
             yeah=true;
-            da.what=nucleotide.direction;
+            //da.what=nucleotide.direction;
         }
     }
 
@@ -755,7 +784,7 @@ function checking(list, nucleotide, no) {
             feedback(say[ran], colours);
             yeah = true;
             //console.log(da.what);
-            da.what = "C";
+            //da.what = "C";
         }
 
     } else if (rpress===true && nucleotide.direction!==17) {
@@ -768,7 +797,7 @@ function checking(list, nucleotide, no) {
             var colours = createVector(240, 0, 0);
             feedback(saynegative[ran], colours);
             yeah=true;
-            da.what=nucleotide.direction;
+            //da.what=nucleotide.direction;
         }
     }
 
@@ -899,7 +928,7 @@ function keyPressed() {
         started=true;
         players.push(player);
         input.value('');
-        console.log(players);
+        //console.log(players);
     } else if (keyCode===DOWN_ARROW) {
         terminate=true;
         gameOVER();
@@ -921,7 +950,7 @@ function feedback(mess, colours) {
 //---------displays the game over page---------
 function gameOVER() {
     //this needs to change according to the duration of the song - this is too much
-    if (songduration===16800 || terminate===true) {
+    if (songduration/60 >= song.duration() || terminate===true) {
         players[0][1]=myscore;
         //console.log(players);
         //checks the scores to put people into the high score board
@@ -943,6 +972,7 @@ function playAgain() {
     //console.log(stage);
     clear();
     button2.hide();
+    songduration=0;
     terminate=false;
     gameover.style("display", "none");
 
