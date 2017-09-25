@@ -29,21 +29,21 @@ function Particle(x, y,r, life, letter, ra, g, b, which) {
         this.velocity.add(this.acceleration);
 
         //collision with the walls
-        if (this.position.x +swidth*0.021 + this.r/2 > swidth*0.75) {
-            this.position.x = swidth*0.75 - this.r/2;
+        if (this.position.x + swidth*0.021 + (this.r+8)/2 > swidth*0.75) {
+            this.position.x = swidth*0.75 - swidth*0.021 - (this.r+8)/2;
             this.velocity.x *= friction;
         }
-        else if (this.position.x + swidth*0.021 - this.r/2 < 5) {
-            this.position.x = this.r/2;
+        else if (this.position.x + swidth*0.021 - (this.r+8)/2 < 0) {
+            this.position.x = (this.r+8)/2 - swidth*0.021;
             this.velocity.x *= friction;
         }
 
-        if (this.position.y - swidth*0.01 + this.r/2 > sheight*0.85) {
-            this.position.y = sheight*0.85 - this.r/2;
+        if (this.position.y - swidth*0.01 + (this.r+8)/2 > sheight*0.85) {
+            this.position.y = sheight*0.85 - (this.r+8)/2 + swidth*0.01;
             this.velocity.y *= friction;
 
-        } else if (this.position.y - swidth*0.01 - this.r/2 < 0) {
-            this.position.y = this.r/2;
+        } else if (this.position.y - swidth*0.01 - (this.r+8)/2 < 0) {
+            this.position.y = (this.r+8)/2 + swidth*0.01;
             this.velocity.y *= friction;
         }
 
