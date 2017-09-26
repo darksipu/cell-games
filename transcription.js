@@ -69,9 +69,9 @@ function preload() {
 
     //selecting the DOM elements
     firstpage = select("#intro1");
-    gamepage = select("#game");
+    //gamepage = select("#game");
     gameover = select("#gameover");
-    scoremes = select("#score");
+    //scoremes = select("#score");
     song = loadSound('dancesk.mp3');
 
     firstpage.style("display", "none");
@@ -311,7 +311,7 @@ function draw() {
         //deals with the DOM elements
         firstpage.style("display", "none");
         //gamepage.style("display", "inline-block");
-        scoremes.html(mutation);
+        //scoremes.html(mutation);
 
         //displays and fades the messages away
         if (yeah===true) {
@@ -391,45 +391,45 @@ function draw() {
 
         //these had to be done 'manually', as the for loop would give flashy text
         text(highscore[0][0], swidth*0.1, sheight*0.20);
-        text(highscore[0][1], swidth*0.40, sheight*0.20);
-        text(highscore[0][2], swidth*0.50, sheight*0.20);
+        text(highscore[0][1], swidth*0.3, sheight*0.20);
+        text(highscore[0][2], swidth*0.4, sheight*0.20);
 
 
         text(highscore[1][0], swidth*0.1, sheight*0.25);
-        text(highscore[1][1], swidth*0.40, sheight*0.25);
-        text(highscore[1][2], swidth*0.50, sheight*0.20);
+        text(highscore[1][1], swidth*0.3, sheight*0.25);
+        text(highscore[1][2], swidth*0.4, sheight*0.20);
 
         text(highscore[2][0], swidth*0.1, sheight*0.30);
-        text(highscore[2][1], swidth*0.40, sheight*0.30);
-        text(highscore[2][2], swidth*0.50, sheight*0.20);
+        text(highscore[2][1], swidth*0.3, sheight*0.30);
+        text(highscore[2][2], swidth*0.4, sheight*0.20);
 
         text(highscore[3][0], swidth*0.1, sheight*0.35);
-        text(highscore[3][1], swidth*0.40, sheight*0.35);
-        text(highscore[3][2], swidth*0.50, sheight*0.20);
+        text(highscore[3][1], swidth*0.3, sheight*0.35);
+        text(highscore[3][2], swidth*0.4, sheight*0.20);
 
         text(highscore[4][0], swidth*0.1, sheight*0.40);
-        text(highscore[4][1], swidth*0.40, sheight*0.40);
-        text(highscore[4][2], swidth*0.50, sheight*0.20);
+        text(highscore[4][1], swidth*0.3, sheight*0.40);
+        text(highscore[4][2], swidth*0.4, sheight*0.20);
 
         text(highscore[5][0], swidth*0.1, sheight*0.45);
-        text(highscore[5][1], swidth*0.40, sheight*0.45);
-        text(highscore[5][2], swidth*0.50, sheight*0.20);
+        text(highscore[5][1], swidth*0.3, sheight*0.45);
+        text(highscore[5][2], swidth*0.4, sheight*0.20);
 
         text(highscore[6][0], swidth*0.1, sheight*0.50);
-        text(highscore[6][1], swidth*0.40, sheight*0.50);
-        text(highscore[6][2], swidth*0.50, sheight*0.20);
+        text(highscore[6][1], swidth*0.3, sheight*0.50);
+        text(highscore[6][2], swidth*0.4, sheight*0.20);
 
         text(highscore[7][0], swidth*0.1, sheight*0.55);
-        text(highscore[7][1], swidth*0.40, sheight*0.55);
-        text(highscore[7][2], swidth*0.50, sheight*0.20);
+        text(highscore[7][1], swidth*0.3, sheight*0.55);
+        text(highscore[7][2], swidth*0.4, sheight*0.20);
 
         text(highscore[8][0], swidth*0.1, sheight*0.60);
-        text(highscore[8][1], swidth*0.40, sheight*0.60);
-        text(highscore[8][2], swidth*0.50, sheight*0.20);
+        text(highscore[8][1], swidth*0.3, sheight*0.60);
+        text(highscore[8][2], swidth*0.4, sheight*0.20);
 
         text(highscore[9][0], swidth*0.1, sheight*0.65);
-        text(highscore[9][1], swidth*0.40, sheight*0.65);
-        text(highscore[9][2], swidth*0.50, sheight*0.20);
+        text(highscore[9][1], swidth*0.3, sheight*0.65);
+        text(highscore[9][2], swidth*0.4, sheight*0.20);
 
         button2.position(swidth*0.625, sheight*0.85);
         button2.show();
@@ -949,7 +949,7 @@ function keyPressed() {
 
 function greet() {
     var name = input.value();
-    player = [name,0];
+    player = [name,0,0];
     stage=1;
 }
 

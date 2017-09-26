@@ -199,7 +199,7 @@ function draw() {
                 acidsintro.splice(i, 1);
                 //console.log("It happened");
                 nextTarget=0;
-                needTarget = true;
+                needTarget = false;
             }
         }
         //increasing the time for the Perlin Noise
@@ -209,6 +209,7 @@ function draw() {
     } else if (stage===2) {
         //recording the time taken to finish the game
         myscore++;
+        console.log(nextTarget);
 
         firstpage.style("display", "none");
 
@@ -348,6 +349,7 @@ function draw() {
 //starts the game and the song
 function keyPressed() {
     if (keyCode===UP_ARROW && started===false) {
+        needTarget=true;
         stage = 2;
         started=true;
         timestarted=frameCount;
@@ -407,8 +409,6 @@ function addAcid(acids, version, desired) {
 function gameOVER(type) {
         lives=300;
         stage=3;
-
-
 
         gameover.style("display", "flex");
         gamepage.style("display", "none");
