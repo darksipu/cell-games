@@ -200,7 +200,6 @@ function draw() {
                 //console.log("It happened");
                 nextTarget=0;
                 needTarget = true;
-                timestarted=frameCount;
             }
         }
         //increasing the time for the Perlin Noise
@@ -349,6 +348,7 @@ function keyPressed() {
     if (keyCode===UP_ARROW && started===false) {
         stage = 2;
         started=true;
+        timestarted=frameCount;
         input.value('');
         players.push(player);
     } else if (keyCode===DOWN_ARROW) {
@@ -374,7 +374,7 @@ function addAcid(acids, version, desired) {
 
         if (version===1) {
             if (needTarget === true && frameCount > 200) {
-                acids.push(new Particle(100 + ran * 50, 100 + ran * 50, swidth*0.05, 0, desired[nextTarget], ra, g, b, true));
+                acids.push(new Particle(ran * 100, ran * 100, swidth*0.05, 0, desired[nextTarget], ra, g, b, true));
                 //console.log("CATCH the " + desired[nextTarget]);
                 needTarget = false;
             }
@@ -383,10 +383,10 @@ function addAcid(acids, version, desired) {
             //add a couple of AAs that are not targets in the first 6s after we entered stage 2
             if (needTarget === false || frameCount < timestarted + 450) {
                 //console.log("Reached phase 2");
-                acids.push(new Particle(100 + ran * 50, 100 + ran * 50, swidth*0.05, 0, acidlist[ran], ra, g, b, false));
+                acids.push(new Particle(ran * 100,ran * 100, swidth*0.05, 0, acidlist[ran], ra, g, b, false));
                 //console.log("Added a NORMAL");
 
-            } else if (needTarget === true && frameCount > timestarted + 500) {
+            } else if (needTarget === true && frameCount > timestarted + 450) {
 
                 //we first remove any acids that are the same as the next target and then add it
                 for (var k = 0; k < acids.length; k++) {
@@ -394,7 +394,7 @@ function addAcid(acids, version, desired) {
                         acids.splice(k, 1);
                     }
                 }
-                acids.push(new Particle(100 + ran * 50, 100 + ran * 50, swidth*0.05, 0, desired[nextTarget], ra, g, b, true));
+                acids.push(new Particle(ran * 100, ran * 100, swidth*0.05, 0, desired[nextTarget], ra, g, b, true));
                 //console.log("CATCH the " + desired[nextTarget]);
                 needTarget = false;
             }
@@ -431,6 +431,8 @@ function playAgain() {
     terminate=false;
     started=false;
     acids_left=desiredchain.length;
+    nextTarget=0;
+    needTarget=true;
 
 
     gameover.style("display", "none");
