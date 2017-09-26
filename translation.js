@@ -22,7 +22,7 @@ var acidsgame=[], acidsintro=[];
 var acidlist = ["Met", "Lys", "Arg", "Leu", "Asn", "Ser", "Gln", "His", "Cys", "Glu"];
 var desiredchain = ["Met", "Gly","Leu", "Asp", "Arg", "Ser", "His", "Glu", "Leu", "Gly", "Asn", "His", "Asp", "Met", "Arg", "Leu"];
 var desiredchainintro = ["Met", "Gly","Leu", "Asp"];
-var tRNA, lives=300;
+var tRNA, lives=300, myscore=0;
 var stage=0, acids_left = desiredchain.length;
 
 //do we need a new target?
@@ -207,6 +207,8 @@ function draw() {
         t2i+=0.01;
 
     } else if (stage===2) {
+        //recording the time taken to finish the game
+        myscore++;
 
         firstpage.style("display", "none");
 
@@ -406,7 +408,7 @@ function gameOVER(type) {
         lives=300;
         stage=3;
 
-        checkScore(players);
+
 
         gameover.style("display", "flex");
         gamepage.style("display", "none");
@@ -416,10 +418,12 @@ function gameOVER(type) {
         //play different tunes
         if (type===1) {
             happy.play();
+            players[players.length-1][1] = Math.floor(myscore/60);
         } else if (type===2) {
            getwrecked.play();
         }
         fill(250);
+        checkScore(players);
  }
 
 function playAgain() {
@@ -431,6 +435,7 @@ function playAgain() {
     terminate=false;
     started=false;
     acids_left=desiredchain.length;
+    myscore=0;
     nextTarget=0;
     needTarget=true;
 
@@ -451,16 +456,17 @@ function playAgain() {
 
 }
 
-//checks all the scores for players and then compiles a high score board
+//checks all the scores for players and then compiles a high score board - we will measure time taken to catch all of them - lowest wins
 function checkScore(people) {
     for (var i=0; i<highscore.length; i++) {
         highscore[i]=["",""];
     }
     //console.log(highscore);
 
+    //sort the array depending on the lowest time taken to catch all of them
     for(var i=0; i<people.length; i++) {
         whowins = people.sort(function (a, b) {
-            return b[1] - a[1]});
+            return a[1] - b[1]});
     }
 
     for (var j=0; j<whowins.length;j++) {

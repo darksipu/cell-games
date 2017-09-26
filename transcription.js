@@ -39,7 +39,7 @@ var songduration=0;
 //stage3 - the end
 //stage4 - play again?
 
-var stage=0, player=[["lala", 0]], highscore, started=false, players=[];
+var stage=0, player=["", 0, 0], highscore, started=false, players=[];
 
 //controls the DOM for the instructions page, which will disappear when we start the game
 var firstpage, scoremes, gamepage, message, button, button2, myFont2, myFont3;
@@ -254,7 +254,7 @@ function draw() {
             } else if (upress===true && openingarrows[i].direction!==8) {
                 if (up.overlap(openingarrows[i]) === true && openingarrows[i].visible === 1) {
                     openingarrows.splice(i,1);
-                    background(250, 0, 0, 200);
+                   // background(250, 0, 0, 200);
                 }
             }
 
@@ -265,7 +265,7 @@ function draw() {
             } else if (dpress===true && openingarrows[i].direction!==14) {
                 if (down.overlap(openingarrows[i]) === true && openingarrows[i].visible === 1) {
                     openingarrows.splice(i,1);
-                    background(250, 0, 0, 200);
+                    //background(250, 0, 0, 200);
                 }
             }
 
@@ -276,7 +276,7 @@ function draw() {
             } else if (lpress===true && openingarrows[i].direction!==7) {
                 if (left.overlap(openingarrows[i]) === true && openingarrows[i].visible === 1) {
                     openingarrows.splice(i,1);
-                    background(250, 0, 0, 200);
+                    //background(250, 0, 0, 200);
                 }
             }
 
@@ -287,7 +287,7 @@ function draw() {
             } else if (rpress===true && openingarrows[i].direction!==17) {
                 if (right.overlap(openingarrows[i]) === true && openingarrows[i].visible === 1) {
                     openingarrows.splice(i,1);
-                    background(250, 0, 0, 200);
+                   // background(250, 0, 0, 200);
                 }
             }
 
@@ -310,7 +310,7 @@ function draw() {
 
         //deals with the DOM elements
         firstpage.style("display", "none");
-        gamepage.style("display", "inline-block");
+        //gamepage.style("display", "inline-block");
         scoremes.html(mutation);
 
         //displays and fades the messages away
@@ -392,33 +392,44 @@ function draw() {
         //these had to be done 'manually', as the for loop would give flashy text
         text(highscore[0][0], swidth*0.1, sheight*0.20);
         text(highscore[0][1], swidth*0.40, sheight*0.20);
+        text(highscore[0][2], swidth*0.50, sheight*0.20);
+
 
         text(highscore[1][0], swidth*0.1, sheight*0.25);
         text(highscore[1][1], swidth*0.40, sheight*0.25);
+        text(highscore[1][2], swidth*0.50, sheight*0.20);
 
         text(highscore[2][0], swidth*0.1, sheight*0.30);
         text(highscore[2][1], swidth*0.40, sheight*0.30);
+        text(highscore[2][2], swidth*0.50, sheight*0.20);
 
         text(highscore[3][0], swidth*0.1, sheight*0.35);
         text(highscore[3][1], swidth*0.40, sheight*0.35);
+        text(highscore[3][2], swidth*0.50, sheight*0.20);
 
         text(highscore[4][0], swidth*0.1, sheight*0.40);
         text(highscore[4][1], swidth*0.40, sheight*0.40);
+        text(highscore[4][2], swidth*0.50, sheight*0.20);
 
         text(highscore[5][0], swidth*0.1, sheight*0.45);
         text(highscore[5][1], swidth*0.40, sheight*0.45);
+        text(highscore[5][2], swidth*0.50, sheight*0.20);
 
         text(highscore[6][0], swidth*0.1, sheight*0.50);
         text(highscore[6][1], swidth*0.40, sheight*0.50);
+        text(highscore[6][2], swidth*0.50, sheight*0.20);
 
         text(highscore[7][0], swidth*0.1, sheight*0.55);
         text(highscore[7][1], swidth*0.40, sheight*0.55);
+        text(highscore[7][2], swidth*0.50, sheight*0.20);
 
         text(highscore[8][0], swidth*0.1, sheight*0.60);
         text(highscore[8][1], swidth*0.40, sheight*0.60);
+        text(highscore[8][2], swidth*0.50, sheight*0.20);
 
         text(highscore[9][0], swidth*0.1, sheight*0.65);
         text(highscore[9][1], swidth*0.40, sheight*0.65);
+        text(highscore[9][2], swidth*0.50, sheight*0.20);
 
         button2.position(swidth*0.625, sheight*0.85);
         button2.show();
@@ -951,18 +962,20 @@ function feedback(mess, colours) {
 function gameOVER() {
     //this needs to change according to the duration of the song - this is too much
     if (songduration/60 >= song.duration() || terminate===true) {
-        players[0][1]=myscore;
-        //console.log(players);
+        stage=3;
+        players[players.length-1][1]=myscore;
+        players[players.length-1][2]=mutation;
+        console.log(players);
         //checks the scores to put people into the high score board
         checkScore(players);
         //console.log(players);
         //moves into the third stage of the game
         song.stop();
-        stage=3;
         gameover.style("display", "flex");
-        gamepage.style("display", "none");
+        //gamepage.style("display", "none");
         fill(250);
         started=false;
+
     }
 }
 
@@ -973,6 +986,8 @@ function playAgain() {
     clear();
     button2.hide();
     songduration=0;
+    myscore=0;
+    mutation=0;
     terminate=false;
     gameover.style("display", "none");
 
@@ -1006,7 +1021,7 @@ function checkScore(people) {
     }
 
     for (var j=0; j<whowins.length;j++) {
-        highscore[j] = [whowins[j][0], whowins[j][1],1];
+        highscore[j] = [whowins[j][0], whowins[j][1],whowins[j][2]];
     }
     //console.log(people);
     //console.log(whowins);
