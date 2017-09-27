@@ -65,7 +65,7 @@ function preload() {
     DNAy = screen.height*0.05;
     //the speed with which the arrows fall
     //let's try out a few of them - range 0.003 to 0.007
-    arrowspeed = screen.height*0.0035;
+    arrowspeed = screen.height*0.003;
 
     //selecting the DOM elements
     firstpage = select("#intro1");

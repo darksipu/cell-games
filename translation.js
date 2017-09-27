@@ -20,7 +20,7 @@ var sheight, swidth;
 //gameplay Variables
 var acidsgame=[], acidsintro=[];
 var acidlist = ["Met", "Lys", "Arg", "Leu", "Asn", "Ser", "Gln", "His", "Cys", "Glu"];
-var desiredchain = ["Met", "Gly","Leu", "Asp", "Arg", "Ser", "His", "Glu", "Leu", "Gly", "Asn", "His", "Asp", "Met", "Arg", "Leu"];
+var desiredchain = ["Met", "Gly","Leu", "Asp", "Arg", "Ser", "His", "Glu", "Leu", "Gly", "Asn", "His", "Asp"]// "Met", "Arg", "Leu"];
 var desiredchainintro = ["Met", "Gly","Leu", "Asp"];
 var tRNA, lives=300, myscore=0;
 var stage=0, acids_left = desiredchain.length;
