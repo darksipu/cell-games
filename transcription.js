@@ -65,7 +65,7 @@ function preload() {
     DNAy = screen.height*0.05;
     //the speed with which the arrows fall
     //let's try out a few of them - range 0.003 to 0.007
-    arrowspeed = screen.height*0.003;
+    arrowspeed = screen.height*0.0035;
 
     //selecting the DOM elements
     firstpage = select("#intro1");
@@ -212,6 +212,12 @@ function draw() {
         //displaying the instructions
         firstpage.style("display", "block");
 
+        if (yeah===true) {
+            message.show();
+            message.update();
+        }
+
+
         //doing the demo
         if(frameCount%30===0) {
             if (frameCount % 300 === 0) {
@@ -250,10 +256,20 @@ function draw() {
 
                 if (up.overlap(openingarrows[i]) === true && openingarrows[i].visible === 1) {
                     openingarrows.splice(i,1);
+
+                    var colours = createVector(0, 240, 0);
+                    var ran = Math.floor(Math.random()*say.length);
+                    feedback(say[ran], colours);
+                    yeah = true;
                 }
             } else if (upress===true && openingarrows[i].direction!==8) {
                 if (up.overlap(openingarrows[i]) === true && openingarrows[i].visible === 1) {
                     openingarrows.splice(i,1);
+
+                    var ran = Math.floor(Math.random()*saynegative.length);
+                    var colours = createVector(240, 0, 0);
+                    feedback(saynegative[ran], colours);
+                    yeah=true;
                    // background(250, 0, 0, 200);
                 }
             }
@@ -261,10 +277,20 @@ function draw() {
             if (dpress===true && openingarrows[i].direction === 14) {
                 if (down.overlap(openingarrows[i]) === true && openingarrows[i].visible === 1) {
                     openingarrows.splice(i,1);
+
+                    var colours = createVector(0, 240, 0);
+                    var ran = Math.floor(Math.random()*say.length);
+                    feedback(say[ran], colours);
+                    yeah = true;
                 }
             } else if (dpress===true && openingarrows[i].direction!==14) {
                 if (down.overlap(openingarrows[i]) === true && openingarrows[i].visible === 1) {
                     openingarrows.splice(i,1);
+
+                    var ran = Math.floor(Math.random()*saynegative.length);
+                    var colours = createVector(240, 0, 0);
+                    feedback(saynegative[ran], colours);
+                    yeah=true;
                     //background(250, 0, 0, 200);
                 }
             }
@@ -272,10 +298,20 @@ function draw() {
             if (lpress===true && openingarrows[i].direction === 7) {
                 if (left.overlap(openingarrows[i]) === true && openingarrows[i].visible === 1) {
                     openingarrows.splice(i,1);
+
+                    var colours = createVector(0, 240, 0);
+                    var ran = Math.floor(Math.random()*say.length);
+                    feedback(say[ran], colours);
+                    yeah = true;
                 }
             } else if (lpress===true && openingarrows[i].direction!==7) {
                 if (left.overlap(openingarrows[i]) === true && openingarrows[i].visible === 1) {
                     openingarrows.splice(i,1);
+
+                    var ran = Math.floor(Math.random()*saynegative.length);
+                    var colours = createVector(240, 0, 0);
+                    feedback(saynegative[ran], colours);
+                    yeah=true;
                     //background(250, 0, 0, 200);
                 }
             }
@@ -283,10 +319,20 @@ function draw() {
             if (rpress===true && openingarrows[i].direction === 17) {
                 if (right.overlap(openingarrows[i]) === true && openingarrows[i].visible === 1) {
                     openingarrows.splice(i,1);
+
+                    var colours = createVector(0, 240, 0);
+                    var ran = Math.floor(Math.random()*say.length);
+                    feedback(say[ran], colours);
+                    yeah = true;
                 }
             } else if (rpress===true && openingarrows[i].direction!==17) {
                 if (right.overlap(openingarrows[i]) === true && openingarrows[i].visible === 1) {
                     openingarrows.splice(i,1);
+
+                    var ran = Math.floor(Math.random()*saynegative.length);
+                    var colours = createVector(240, 0, 0);
+                    feedback(saynegative[ran], colours);
+                    yeah=true;
                    // background(250, 0, 0, 200);
                 }
             }
@@ -995,6 +1041,7 @@ function playAgain() {
     myscore=0;
     mutation=0;
     terminate=false;
+    yeah = false
     gameover.style("display", "none");
 
 
