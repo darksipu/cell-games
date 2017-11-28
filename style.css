@@ -3,11 +3,10 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/css?family=Wendy+One');
 
 #title {
 
-    margin-right: 25%;
+    margin-right: 20%;
     margin-bottom: 50px;
     font-family: Prociono;
     font-size: 60px;
@@ -52,11 +51,7 @@
 
 
 #intro {
-    margin:2% 5% 0 5%;
-}
-
-#intro p {
-    padding: 0 28% 0 0;
+    margin:2% 5% 0 20%;
 }
 
 /* CSS for the transcription*/
@@ -109,48 +104,40 @@
     float: right;
     text-align: center;
     display: none;
-    margin: 1% 0 0 62%;
+    margin: 10% 0 0 60%;
 }
 
 #game p {
-    padding-left:50%;
+    padding-left:30px;
 }
 
 
 #gameover {
     display: none;
-    margin: 10% 0 0 37%;
-}
+    margin: 10% 0 0 40%;
 
-#gameover2 {
-    display: none;
-    margin: 10% 0 0 55%;
 }
 
 #loser {
-
+    padding-left:30px;
     text-align: center;
-    justify-content: center;
-    font-size: 25px;
-    color: rgba(0, 78, 78, 0.66);
-    font-family: "Noto Sans";
+    font-size: 30px;
+    color: teal;
+    font-family: Orbitron;
 }
 
 #target {
     text-align: center;
-    font-size: 120px;
+    font-size: 70px;
     color: crimson;
-    margin:0;
-    font-family: Wendy One;
+    font-family: Orbitron;
     font-style: italic;
     text-shadow: -1px -1px 0px rgba(255,255,255,0.3), 1px 1px 0px rgba(0,0,0,0.8);
 }
-
 #targettext {
     font-family: Noto Sans;
     text-align: center;
     font-size: 30px;
-    margin:0;
     font-weight: 800;
     font-style: italic;
 
@@ -158,11 +145,9 @@
 
 #scoretext {
     text-align: center;
-    font-size: 25px;
-    margin:0;
+    font-size: 20px;
     font-family: "Noto Sans";
     color: dodgerblue;
-    font-weight: 800;
     font-style: italic;
 
 }

@@ -12,11 +12,11 @@ function Particle(x, y,r, life, letter, ra, g, b, which) {
     //displays the object
     this.display = function() {
         stroke(0);
-        textSize(swidth*0.025);
+        textSize(50);
         fill(ra, g, b, 200);
-        ellipse(this.position.x+swidth*0.021, this.position.y - swidth*0.01, this.r+8, this.r+8);
-        noStroke();
-        fill(250);
+        //try to put everything in percentages
+        ellipse(this.position.x+15, this.position.y-9, this.r+8, this.r+8);
+        fill(240);
         text(this.what, this.position.x, this.position.y);
     }
 
@@ -29,21 +29,21 @@ function Particle(x, y,r, life, letter, ra, g, b, which) {
         this.velocity.add(this.acceleration);
 
         //collision with the walls
-        if (this.position.x + swidth*0.021 + (this.r+8)/2 > swidth*0.75) {
-            this.position.x = swidth*0.75 - swidth*0.021 - (this.r+8)/2;
+        if (this.position.x + this.r/2 > swidth) {
+            this.position.x = swidth - this.r/2;
             this.velocity.x *= friction;
         }
-        else if (this.position.x + swidth*0.021 - (this.r+8)/2 < 0) {
-            this.position.x = (this.r+8)/2 - swidth*0.021;
+        else if (this.position.x - this.r/2 < 0) {
+            this.position.x = this.r/2;
             this.velocity.x *= friction;
         }
 
-        if (this.position.y - swidth*0.01 + (this.r+8)/2 > sheight*0.85) {
-            this.position.y = sheight*0.85 - (this.r+8)/2 + swidth*0.01;
+        if (this.position.y + this.r/2 > sheight) {
+            this.position.y = sheight - this.r/2;
             this.velocity.y *= friction;
 
-        } else if (this.position.y - swidth*0.01 - (this.r+8)/2 < 0) {
-            this.position.y = (this.r+8)/2 + swidth*0.01;
+        } else if (this.position.y - this.r/2 < 0) {
+            this.position.y = this.r/2;
             this.velocity.y *= friction;
         }
 
@@ -61,7 +61,7 @@ function Particle(x, y,r, life, letter, ra, g, b, which) {
         var distance = createVector(W.position.x - this.position.x, W.position.y - this.position.y);
 
         //var distance = Math.sqrt(Math.pow(distancex, 2)+ Math.pow(distancey,2));
-       // console.log(distance);
+        // console.log(distance);
         var minDist=W.r/2 + this.r/2+10;
 
         if (distance.mag() <= minDist) {
@@ -80,8 +80,7 @@ function Particle(x, y,r, life, letter, ra, g, b, which) {
     //senses if it's caught by the mouse
     this.caught = function() {
         var dist = createVector(tRNA.position.x - this.position.x, tRNA.position.y-this.position.y);
-        //change the second part to change how sensitive you are when eating AAs
-        return dist.mag()<(this.r+8)/2;
+        return dist.mag()<30;
     }
     //wants to be caught by the mouse, but it's the non-target ones
     this.seek= function() {

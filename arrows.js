@@ -10,7 +10,7 @@ function Arrow(x, y, s, im, no) {
     this.direction = no;
 
     this.display = function () {
-            image(im, this.x, this.y, this.size, this.size);
+        image(im, this.x, this.y, this.size, this.size);
     }
 
     this.overlap = function(other) {
@@ -18,7 +18,7 @@ function Arrow(x, y, s, im, no) {
         var otherx = other.x;
         var othery = other.y;
 
-        return this.x === otherx && this.y <= othery + 30 && this.y >= othery - 30;
+        return this.x === otherx && this.y <= othery + 40 && this.y >= othery - 40;
     }
 
 }
@@ -43,7 +43,7 @@ function DNA(x, y, s, im, no, see) {
     }
 
     this.offBound = function () {
-        return this.y > sheight*0.75;
+        return this.y > screen.height*0.9;
     }
 }
 

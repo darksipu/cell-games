@@ -4,14 +4,13 @@
     <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
     <script language="javascript" type="text/javascript" src="libraries/p5.dom.js"></script>
     <script language="javascript" type="text/javascript" src="libraries/p5.sound.js"></script>
-    <script language="javascript" type="text/javascript" src="libraries/matter.js"></script>
-    <script language="javascript" type="text/javascript" src="libraries/p5.serialport.js"></script>
+    <!-- <script language="javascript" type="text/javascript" src="libraries/matter.js"></script>
+    <script language="javascript" type="text/javascript" src="libraries/p5.serialport.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
-    <!-- uncomment lines below to include extra p5 libraries -->
-    <script language="javascript" type="text/javascript" src="translation.js"></script>
-
-    <script language="javascript" type="text/javascript" src="particle.js"></script>
-    <!--<script language="javascript" type="text/javascript" src="text.js"></script> -->
+    <!-- <script src="node_modules/socket.io/socket.io.js"></script>-->
+   <script language="javascript" type="text/javascript" src="translation.js"></script>
+   <script language="javascript" type="text/javascript" src="particle.js"></script>
+   <!--<script language="javascript" type="text/javascript" src="text.js"></script> -->
     <!-- this line removes any default padding and style. you might only need one of these values set. -->
     <style> body {padding: 0; margin: 0;} </style>
     <link href="style.css" type="text/css" rel="stylesheet">
@@ -22,26 +21,70 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div id="intro" class="col">
-                <h2 id="title" >Show me what you've got</h2>
-                <p class="instructions">Similar to how you used to put LEGO bricks together, proteins are made by putting Amino Acids together in strings.<br> </br><br>You are inside a bacterial cell. Your mission is to go and catch the right one. But careful, as the others are quite keen to get on the train so you’ll have to avoid them.</br></p>
-            </div>
+
+<!--NEEDS sorting out
+<script>
+    window . fbAsyncInit = function () {
+        FB.init({
+            appId: '259984887855243',
+            autoLogAppEvents: true,
+            xfbml: true,
+            version: 'v2.10 '
+        });
+
+        FB.getLoginStatus(function (response) {
+            statusChangeCallback(response);
+        });
+    };
+
+
+    ( Function ( d , s , id ) { var js , fjs = d . GetElementsByTagName ( s ) [ 0 ]; if ( d . GetElementByld ( id )) { return ;}
+        js = d . Create element ( s ); js . Id = id ;
+        js . src =
+
+            "//connect.facebook.net/en_US/sdk.js" ;
+        fjs . parentNode . insertBefore ( js , fjs ); } ( document , 'script' , 'facebook-jssdk' ));
+
+    function statusChangeCallback(response) {
+        if(response.status==="connected") {
+            console.log("Logged in");
+        } else {
+            console.log("Not logged in");
+        }
+
+    }
+
+    function checkLoginState () {
+        FB . getLoginStatus ( function ( response ) {
+            statusChangeCallback ( response ); }); }
+</script>
+
+
+    <fb:login-button
+        scope="public_profile,email"
+        onlogin="checkLoginState();">
+    </fb:login-button>
+-->
+<div class="container-fluid">
+    <div class="row">
+        <div id="intro" class="col">
+            <h2 id="title" >Show me what you've got</h2>
+            <p class="instructions"><b>Player 2</b>, you'll be doing translation: turning mRNA into protein. For this we need a long string of Amino Acids.<br> </br><br>Proteins are just chains of amino acids. Go and catch the right one. But careful, as the others are quite keen to get on the train so you’ll have to avoid them.</br></p>
+        </div>
 
         <div id="game" class="col-4">
             <p id="targettext"> Catch the</p>
-             <p id = "target"> </p>
-             <p id="scoretext">Number of Amino Acids collected:</p>
-             <p id="score"> </p>
+            <p id = "target"> </p>
+            <p id="scoretext">Number of Amino Acids collected:</p>
+            <p id="score"> </p>
         </div>
 
-            <div id="gameover2" class="col-4">
-                <p id="loser"> When the correct sequence of Amino Acids is formed, this chain will go through further processing to turn into the desired protein. Still, this step, together with the one your partner was doing form the 2 key processes evolved through millions of years to store information necessary for passing life. The lesson? Always be mindful of how you translate.</p>
-            </div>
-
+        <div id="gameover" class="col-4">
+            <p id="loser"> Well done, you've learnt some biology</p>
         </div>
+
     </div>
+</div>
 
 </body>
 </html>

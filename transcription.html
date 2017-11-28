@@ -7,8 +7,7 @@
     <script language="javascript" type="text/javascript" src="libraries/p5.sound.js"></script>
     <script language="javascript" type="text/javascript" src="libraries/p5.serialport.js"></script>
     <!-- uncomment lines below to include extra p5 libraries -->
-    <script language="javascript" type="text/javascript" src="transcription.js"></script>
-    <script language="javascript" type="text/javascript" src="arrows.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 
     <!--<script language="javascript" type="text/javascript" src="text.js"></script> -->
@@ -24,45 +23,58 @@
 
 <body>
 
-    <div class="container-fluid">
-        <div style="display:flex; justify-content: center" class="row">
+<div class="container-fluid">
+    <div style="display:flex; justify-content: center" class="row">
 
-            <div id="intro1" class="col-sm-8">
-                <h2 style="margin-left:0;padding-right: 100px" id="title">Time to get schwifty</h2>
-                <div style="margin:0 !important; float:left !important">
-                <p class="instructions"><b>Player 1</b> you’ll take care of the transcription. Your job is to pair mRNA with DNA. Try one at a time.<br> </br> <br>U goes with A and A with T.</br> <br>C with G and G with C. Don't worry about the ones that you can't catch, but careful not to mispair them.</br></p>
-                </div>
-
-<!--                <div style="margin:0 !important;" class="RNA">
-                    <img src="arrow7.png" height="100" width="100">
-                    <img src="arrow17.png" height="100" width="100">
-                    <img src="arrow8.png" height="100" width="100">
-                    <img src="arrow14.png" height="100" width="100">
-                </div>
-
-                <div style="margin:0 !important;" class="DNA">
-                    <img src="arrow4.png" height="100" width="100">
-                    <img src="arrow18.png" height="100" width="100">
-                    <img src="arrow2.png" height="100" width="100">
-                    <img src="arrow13.png" height="100" width="100">
-                </div>-->
-                <!--<p class="instructions">To make protein we turn these sequences in other sequences of something called mRNA.</p>-->
-
+        <div id="intro1" class="col-sm-8">
+            <h2 style="margin-left:0;padding-right: 100px" id="title">Time to get schwifty</h2>
+            <div style="margin:0 !important; float:left !important">
+                <p class="instructions"><b>Player 1</b> you’ll take care of the transcription. Your job is to pair mRNA with DNA. Try one at a time.<br> </br> <br>U goes with A and A with T.</br> <br>C with G and G with C.</br></p>
             </div>
 
-<!-- Here we add or remove the elements showing the scores -->
+            <!--                <div style="margin:0 !important;" class="RNA">
+                                <img src="arrow7.png" height="100" width="100">
+                                <img src="arrow17.png" height="100" width="100">
+                                <img src="arrow8.png" height="100" width="100">
+                                <img src="arrow14.png" height="100" width="100">
+                            </div>
 
-<!--            <div id="game" class="col-4">
-                <p id="targettext">Mutation levels</p>
-                <p id="score"> </p>
-                <p id="message"> </p>
-            </div>-->
-
-            <div id="gameover" class="col-4">
-                <p id="loser"> The journey from DNA to mRNA is a tricky one. In the same way that you missed letters or paired them incorreclty, errors happen during transcription.<br> </br><br>Mispairings lead to sequences different to what was initially expected. The result? We produce the wrong proteins, they are not stable or they don't do the intended function. This way, mutations happen.</br></p>
-            </div>
+                            <div style="margin:0 !important;" class="DNA">
+                                <img src="arrow4.png" height="100" width="100">
+                                <img src="arrow18.png" height="100" width="100">
+                                <img src="arrow2.png" height="100" width="100">
+                                <img src="arrow13.png" height="100" width="100">
+                            </div>-->
+            <!--<p class="instructions">To make protein we turn these sequences in other sequences of something called mRNA.</p>-->
 
         </div>
+
+        <div id="game" class="col-4">
+            <p id="targettext">Mutation levels</p>
+            <p id="score"> </p>
+            <p id="message"> </p>
+        </div>
+
+        <div id="gameover" class="col-4">
+            <p id="loser"> Well done, you've learnt some biology</p>
+        </div>
+
     </div>
+</div>
+
+<script type="text/javascript">
+    var script = document.createElement('script');
+    script.setAttribute('src', 'transcription.js');
+    script.setAttribute('type', 'text/javascript');
+    document.getElementsByTagName('head')[0].appendChild(script);
+
+    var script2 = document.createElement('script');
+    script2.setAttribute('src', 'arrows.js');
+    script2.setAttribute('type', 'text/javascript');
+    document.getElementsByTagName('head')[0].appendChild(script2);
+</script>
+<!--<script language="javascript" type="text/javascript" src="transcription.js"></script>
+<script language="javascript" type="text/javascript" src="arrows.js"></script>-->
 </body>
+
 </html>
