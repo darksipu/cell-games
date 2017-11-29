@@ -47,3 +47,7 @@ Next steps
 
 The 2 games can communicate with each other via the sockets, but the gameplay needs optimizing and some function need to be faster. Welcoming suggestions on that.
 
+In development
+----
+
+Soon, I'll upload my prototype for a live quorum sensing exercise through (hopefully), as webb app, for which I'd definitely appreciate any help/feedback.
