@@ -50,4 +50,4 @@ The 2 games can communicate with each other via the sockets, but the gameplay ne
 In development
 ----
 
-Soon, I'll upload my prototype for a live quorum sensing exercise through (hopefully), as webb app, for which I'd definitely appreciate any help/feedback.
+Soon (_**ETA** January 2018_), I'll upload my prototype for a live quorum sensing exercise through (hopefully), as webb app, for which I'd definitely appreciate any help/feedback.
