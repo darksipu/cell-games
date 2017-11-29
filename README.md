@@ -38,7 +38,7 @@ To run the current games you will need to download and include in your project t
 You may find better ways to optimize performance or use better libraries. If so, let me know! Make pull requests and fork the project.
 
 
-In a previous version, I used `p5.serialcontrol` for serial communication with the Arduino: https://github.com/vanevery/p5.serialcontrol/releases , but found `johnny-five` to be much faster.
+In a previous version, I used `p5.serialcontrol` for serial communication with the Arduino: https://github.com/vanevery/p5.serialcontrol/releases , but found `johnny-five` to be much faster. If planning to use the former, also include `p5.serialcontrol.js`
 
 
 
