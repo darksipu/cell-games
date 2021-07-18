@@ -1,0 +1,23 @@
+{
+  "name": "cells",
+  "version": "1.0.0",
+  "description": "Building a server for everything",
+  "main": "server_new.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "transcription",
+    "translation",
+    "biology"
+  ],
+  "author": "Florin Gheorghiu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4",
+    "johnny-five": "^0.11.6",
+    "open": "0.0.5",
+    "socket.io": "^2.0.3"
+  }
+}
